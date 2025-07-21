@@ -3,13 +3,10 @@
 import { useState, useEffect } from "react";
 
 import { Play, MessageCircle } from "lucide-react";
+import { useParams } from "next/navigation";
 import Chatbot from "@/components/chatbot";
 
-interface YouTubePlayerProps {
-  videoId: string;
-}
-
-export default function YouTubePlayer({ videoId }: YouTubePlayerProps) {
+export default function YouTubePlayer() {
   const [videoInfo, setVideoInfo] = useState<{
     title?: string;
     channelTitle?: string;
@@ -17,6 +14,8 @@ export default function YouTubePlayer({ videoId }: YouTubePlayerProps) {
   }>({});
   const [isLoading, setIsLoading] = useState(true);
   const [showChat, setShowChat] = useState(false);
+  const params = useParams();
+  const videoId = params["youtube"];
 
   useEffect(() => {
     // You can add video info fetching logic here if needed
@@ -43,7 +42,7 @@ export default function YouTubePlayer({ videoId }: YouTubePlayerProps) {
                   </div>
                 ) : (
                   <iframe
-                    src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
+                    src={`https://www.youtube.com/embed/${videoId}`}
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
@@ -57,7 +56,7 @@ export default function YouTubePlayer({ videoId }: YouTubePlayerProps) {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <h1 className="text-xl font-bold text-gray-900 mb-2">
-                      {videoInfo.title || "YouTube Video"}
+                      Youtube Video
                     </h1>
                     <div className="flex items-center gap-2 text-gray-600 mb-4">
                       <Play className="w-4 h-4" />

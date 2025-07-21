@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Send, Bot, User, Loader2 } from "lucide-react";
 
 interface ChatbotProps {
-  videoId: string;
+  videoId: any;
 }
 
 export default function Chatbot({ videoId }: ChatbotProps) {
@@ -104,7 +104,7 @@ export default function Chatbot({ videoId }: ChatbotProps) {
                 placeholder="Ask about this video..."
                 onChange={handleInputChange}
                 disabled={isLoading}
-                className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none text-sm disabled:opacity-50"
+                className="flex-1 p-3 border text-black border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none text-sm disabled:opacity-50"
               />
               <button
                 type="submit"

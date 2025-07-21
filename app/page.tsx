@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { Search, Play, Clock, Eye, Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface VideoSnippet {
   title: string;
@@ -22,12 +23,8 @@ interface VideoItem {
 
 export default function Home() {
   const key = process.env.NEXT_PUBLIC_YOUTUBE_API; // Replace with your actual API key
-  const router = {
-    push: (path: string) => {
-      // Replace with your routing logic or window.open for demo
-      window.open(`https://youtube.com/watch?v=${path.replace('/', '')}`, '_blank');
-    }
-  };
+
+  const router = useRouter();
 
   const [videos, setVideos] = useState<VideoItem[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");

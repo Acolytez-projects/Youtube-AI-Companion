@@ -7,15 +7,19 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
-          <div className="flex items-center gap-2">
-            <Youtube className="w-8 h-8 text-white" />
-            <span className="text-white font-bold text-xl">YouTube AI Chat</span>
+          <div>
+            <Link href="/" className="flex items-center gap-2">
+              <Youtube className="w-8 h-8 text-white" />
+              <span className="text-white font-bold text-xl">
+                YouTube AI Companion
+              </span>
+            </Link>
           </div>
 
           {/* Navigation Links */}
           <div className="flex items-center gap-4">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors duration-200"
             >
               <Home className="w-4 h-4" />
