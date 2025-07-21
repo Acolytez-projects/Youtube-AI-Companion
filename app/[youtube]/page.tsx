@@ -37,7 +37,7 @@ export default function YouTubePlayer() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
+    <div className="min-h-[calc(100vh-4rem)] bg-gray-100 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Video Player Section */}
