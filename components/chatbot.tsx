@@ -3,9 +3,10 @@
 import { useChat } from "ai/react";
 import { useState } from "react";
 import { Send, Bot, User, Loader2 } from "lucide-react";
+import { ParamValue } from "next/dist/server/request/params";
 
 interface ChatbotProps {
-  videoId: string | any;
+  videoId: ParamValue;
 }
 
 export default function Chatbot({ videoId }: ChatbotProps) {
