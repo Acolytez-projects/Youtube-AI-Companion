@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { Search, Play, Clock, Eye, Loader2 } from "lucide-react";
@@ -33,35 +33,40 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  const fetchVideos = useCallback(async (query: string) => {
-    if (!query.trim() || !key) return;
-    
-    setIsLoading(true);
-    setError("");
-    
-    try {
-      const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&maxResults=12&key=${key}`
-      );
-      
-      if (!response.ok) {
-        throw new Error(`API Error: ${response.status}`);
+  const fetchVideos = useCallback(
+    async (query: string) => {
+      if (!query.trim() || !key) return;
+
+      setIsLoading(true);
+      setError("");
+
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
+            query
+          )}&type=video&maxResults=12&key=${key}`
+        );
+
+        if (!response.ok) {
+          throw new Error(`API Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.error) {
+          throw new Error(data.error.message);
+        }
+
+        setVideos(data.items || []);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to fetch videos");
+        setVideos([]);
+      } finally {
+        setIsLoading(false);
       }
-      
-      const data = await response.json();
-      
-      if (data.error) {
-        throw new Error(data.error.message);
-      }
-      
-      setVideos(data.items || []);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to fetch videos");
-      setVideos([]);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [key]);
+    },
+    [key]
+  );
 
   useEffect(() => {
     if (activeSearch) {
@@ -69,23 +74,31 @@ export default function Home() {
     }
   }, [activeSearch, fetchVideos]);
 
-  const handleSubmit = useCallback((e: React.MouseEvent | React.KeyboardEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      setActiveSearch(searchQuery.trim());
-    }
-  }, [searchQuery]);
+  const handleSubmit = useCallback(
+    (e: React.MouseEvent | React.KeyboardEvent) => {
+      e.preventDefault();
+      if (searchQuery.trim()) {
+        setActiveSearch(searchQuery.trim());
+      }
+    },
+    [searchQuery]
+  );
 
-  const handleVideoClick = useCallback((videoId: string) => {
-    router.push(`/${videoId}`);
-  }, [router]);
+  const handleVideoClick = useCallback(
+    (videoId: string) => {
+      router.push(`/${videoId}`);
+    },
+    [router]
+  );
 
   const formatTimeAgo = useMemo(() => {
     return (publishedAt: string) => {
       const now = new Date();
       const published = new Date(publishedAt);
-      const diffInHours = Math.floor((now.getTime() - published.getTime()) / (1000 * 60 * 60));
-      
+      const diffInHours = Math.floor(
+        (now.getTime() - published.getTime()) / (1000 * 60 * 60)
+      );
+
       if (diffInHours < 24) return `${diffInHours}h ago`;
       const diffInDays = Math.floor(diffInHours / 24);
       if (diffInDays < 30) return `${diffInDays}d ago`;
@@ -115,7 +128,7 @@ export default function Home() {
               YouTube
             </h1>
           </div>
-          
+
           {/* Search Input */}
           <div className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
@@ -126,7 +139,7 @@ export default function Home() {
                 placeholder="Search for videos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}
+                onKeyPress={(e) => e.key === "Enter" && handleSubmit(e)}
                 className="flex-1 bg-transparent text-white placeholder-slate-400 px-4 py-3 focus:outline-none text-lg"
                 disabled={isLoading}
               />
@@ -179,23 +192,25 @@ export default function Home() {
                         <Play className="w-6 h-6 text-white fill-current" />
                       </div>
                     </div>
-                    <img
+                    <Image
                       src={video.snippet.thumbnails.high.url}
                       alt={video.snippet.title}
+                      width={video.snippet.thumbnails.high.width}
+                      height={video.snippet.thumbnails.high.height}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
-                  
+
                   {/* Content */}
                   <div className="p-4">
                     <h3 className="text-white font-semibold text-sm line-clamp-2 mb-2 group-hover:text-red-400 transition-colors">
                       {truncateText(video.snippet.title, 60)}
                     </h3>
-                    
+
                     <p className="text-slate-400 text-xs mb-3 line-clamp-1">
                       {video.snippet.channelTitle}
                     </p>
-                    
+
                     <div className="flex items-center justify-between text-slate-500 text-xs">
                       <div className="flex items-center gap-1">
                         <Clock className="w-3 h-3" />
