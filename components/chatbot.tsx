@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Send, Bot, User, Loader2 } from "lucide-react";
 
 interface ChatbotProps {
-  videoId: any;
+  videoId: string | any;
 }
 
 export default function Chatbot({ videoId }: ChatbotProps) {
