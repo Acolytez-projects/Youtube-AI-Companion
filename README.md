@@ -47,20 +47,7 @@ I’m Aman Stha—a passionate full-stack developer who builds impactful web app
 
 ##  Quick Start  
 
-### Prerequisites  
-- [Git](https://git-scm.com/)  
-- [Node.js](https://nodejs.org/) (LTS recommended)
-
 ### Setup & Run  
 ```bash
 git clone https://github.com/Acolytez-projects/Youtube-AI-Companion.git
 cd Youtube-AI-Companion
-
-# Install & run
-npm install && npm run dev
-# or
-yarn && yarn dev
-# or
-pnpm install && pnpm dev
-# or
-bun install && bun dev
