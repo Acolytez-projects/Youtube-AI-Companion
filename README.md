@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  YouTube AI Companion
 
-## Getting Started
+**Project Banner**  
+Next.js • TypeScript • Tailwind CSS • YouTube API • OpenAI API
 
-First, run the development server:
+---
 
+##  Introduction  
+
+The **YouTube AI Companion** is an experimental web app developed with **Next.js** and **TypeScript** aimed at elevating your YouTube viewing by providing AI-powered insights, summaries, and interactive tools alongside the content.
+
+Designed as a showcase project, it demonstrates my ability to build **modern, high-quality frontend applications**, integrate AI APIs, and deliver polished user experiences with clean, scalable code.
+
+---
+
+##  About Me  
+
+I’m Aman Stha—a passionate full-stack developer who builds impactful web applications. My portfolio shines a light on projects ranging from **real-time chat apps**, **DSA platforms**, to **crypto dashboards** and more.
+
+---
+
+##  Tech Stack  
+
+- **Next.js** – Modern routing and server components  
+- **TypeScript** – Type-safe development  
+- **Tailwind CSS** – Utility-first, responsive styling  
+- **AI Integration (e.g., OpenAI)** – Placeholder for GPT/LLM-powered features  
+- **Vercel** – One-click deployment and globally optimized performance
+
+---
+
+##  Features  
+
+- **AI Video Companion**  
+  Integrate AI tools summaries, Q&A, or video insights directly in your YouTube viewing experience.
+
+- **Responsive & Sleek UI**  
+  Crafted using Tailwind CSS for clean design and smooth UX.
+
+- **Fast Refresh**  
+  Enjoy instant updates during development with Next.js hot reloading.
+
+- **Modular & Extensible**  
+  Easily expand the architecture for APIs, state management (e.g., Zustand), or backend integrations.
+
+---
+
+##  Quick Start  
+
+### Prerequisites  
+- [Git](https://git-scm.com/)  
+- [Node.js](https://nodejs.org/) (LTS recommended)
+
+### Setup & Run  
 ```bash
-npm run dev
+git clone https://github.com/Acolytez-projects/Youtube-AI-Companion.git
+cd Youtube-AI-Companion
+
+# Install & run
+npm install && npm run dev
 # or
-yarn dev
+yarn && yarn dev
 # or
-pnpm dev
+pnpm install && pnpm dev
 # or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+bun install && bun dev
